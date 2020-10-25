@@ -3,6 +3,7 @@ import { QueryCache, ReactQueryCacheProvider } from "react-query";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
+import { Header } from "components/header";
 import { init } from "db";
 
 let queryCache = new QueryCache();
@@ -27,6 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Awesome Images</title>
       </Head>
+      <Header />
       <Box px={8}>
         <Box maxWidth="1240px" margin="0 auto">
           <Component {...pageProps} />
