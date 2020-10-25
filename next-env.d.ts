@@ -3,6 +3,7 @@
 
 type ArrayType<T> = T extends Array<infer U> ? U : T;
 type MapType<T> = T extends Map<infer K, infer V> ? { key: K; value: V } : T;
+type CancellablePromise<T> = Promise<T> & { cancel?: () => void };
 
 module AwesomeImages {
   type Image = {
