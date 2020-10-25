@@ -35,7 +35,7 @@ function getImagesFromUnplash(
     results: AwesomeImages.Image[];
   }> = api
     .extend({ signal })
-    .get("search/photos", { searchParams: options })
+    .get("search/photos", { searchParams: { ...options, per_page: 25 } })
     .json();
 
   promise.cancel = () => controller.abort();
@@ -48,17 +48,24 @@ type SearchPhotosOptions = { query: string; page: number };
 /**
  * Pagination hook to retrieve photos from `unplash` API
  */
-function useSearchPhotosQuery({ query, page }: SearchPhotosOptions) {
+export function useSearchPhotosPaginatedQuery({
+  query,
+  page,
+}: SearchPhotosOptions) {
   return usePaginatedQuery(["images", { query, page }], getImagesFromUnplash);
 }
 
 /**
  * Opens a save file dialog for an image
  */
-export async function downloadImage(link: string, id: string) {
+export async function downloadImage(image: AwesomeImages.Image) {
   let extended = api.extend({ prefixUrl: "" });
-  let photo = await extended.get(link).json<{ url: string }>();
-  return saveAs(photo.url, `photo-${id}`);
+
+  let photo = await extended
+    .get(image.links.download_location)
+    .json<{ url: string }>();
+
+  return saveAs(photo.url, `photo-${image.id}`);
 }
 
 type ListData = {
