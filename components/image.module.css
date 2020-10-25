@@ -1,0 +1,63 @@
+.tile {
+  position: relative;
+  max-width: 300px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 1em;
+  transition: all 0.15s ease-in-out;
+}
+
+.tile:hover {
+  transform: "scale(1.02)";
+}
+
+.tile .image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.tile:hover .actions {
+  transform: translate(0, 0);
+  transition: all 0.2s ease-in;
+}
+
+.tile .actions {
+  display: flex;
+  color: #fff;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  transform: translate(0, -100%);
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  transition: all 0.2s ease-in;
+}
+
+.tile .actions svg {
+  cursor: pointer;
+}
+
+.tile:hover .details {
+  transform: translate(0, 0);
+  transition: all 0.2s ease-in;
+}
+
+.tile .details {
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  transform: translate(0, 100%);
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  text-align: left;
+  transition: all 0.2s ease-in;
+}
+
+.tile .details a {
+  color: #73cffa;
+  text-decoration: underline;
+}
