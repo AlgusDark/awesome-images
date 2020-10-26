@@ -1,5 +1,14 @@
 import { useEffect, useState } from "react";
-import { Box, Button, Flex, HStack, Spinner, VStack } from "@chakra-ui/core";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  HStack,
+  Image,
+  Spinner,
+  VStack,
+} from "@chakra-ui/core";
 
 import { ImagesGrid } from "components/image";
 import { useSearchPhotosPaginatedQuery } from "api";
@@ -67,7 +76,10 @@ function ImagesResults({ query }: ImagesResultsProps) {
           ) : resolvedData.results.length > 0 ? (
             <ImagesGrid images={resolvedData.results} />
           ) : (
-            <Box textAlign="center">No results 😔</Box>
+            <VStack>
+              <Heading as="h2">No results 😔</Heading>
+              <Image border="1px solid #000" src="/sad.gif" />
+            </VStack>
           )}
         </Box>
         {isFetching ? (
