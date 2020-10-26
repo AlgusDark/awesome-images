@@ -21,8 +21,6 @@ function Providers({ children }: { children: React.ReactNode }) {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  console.log(pageProps);
-
   return (
     <Providers>
       <Head>
