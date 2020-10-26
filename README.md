@@ -68,7 +68,7 @@ $ npm start
 - [ ] Write tests
   - [Cypress](https://www.cypress.io/) for E2E and [React Testing Library](https://github.com/testing-library/react-testing-library) for integration tests.
 - [ ] Responsive design
-  - [ ] For the moment this is for **desktop** only
+  - [x] The MPV is **desktop** focused. Tt works on **mobile** but could be improved.
 - [ ] Shareable links
   - [ ] Use the power of the [router](https://nextjs.org/docs/api-reference/next/router) to save the current state of the interaction. This could be an improvement to remove the `activeVariable`'s from codebase and make the use of [query parameters](https://nextjs.org/docs/routing/dynamic-routes) to have a URL to share/save and access in the future.
 - [ ] **Lists**
