@@ -8,6 +8,7 @@ import {
   Image,
   Spinner,
   VStack,
+  Text,
 } from "@chakra-ui/core";
 
 import { ImagesGrid } from "components/image";
@@ -58,7 +59,7 @@ function ImagesResults({ query }: ImagesResultsProps) {
           >
             Previous Page
           </Button>
-          <span>Current Page: {page}</span>
+          <Text textAlign="center">Current Page: {page}</Text>
           <Button
             onClick={() =>
               updatePage((old) => (!latestData || !hasMore ? old : old + 1))
@@ -105,11 +106,11 @@ function SearchBox({ onChange }: SearchBoxProps) {
       onChange={onChange}
       as="input"
       type="search"
-      placeholder="Start typing a cool word..."
+      placeholder="Start typing..."
       width="100%"
       paddingX={6}
       height={24}
-      fontSize={32}
+      fontSize="2em"
       outline="2px solid #2f2f2f"
       marginBottom={12}
     />

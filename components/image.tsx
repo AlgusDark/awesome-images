@@ -6,6 +6,8 @@ import {
   Flex,
   Grid,
   useDisclosure,
+  VStack,
+  Heading,
 } from "@chakra-ui/core";
 import { IoMdDownload } from "react-icons/io";
 import type { ImageProps } from "@chakra-ui/core";
@@ -62,7 +64,14 @@ export function ImageModal({ isOpen, onClose, image }: ImageModalProps) {
       isOpen={isOpen}
       onClose={onClose}
       title={image.alt_description || `Photo by @${image.user.username}`}
-      body={<Image image={image} />}
+      body={
+        <VStack>
+          <Image image={image} />
+          <Heading as="h3" size="sm">
+            Photo by @${image.user.username}
+          </Heading>
+        </VStack>
+      }
       footer={
         <Flex>
           <Button
@@ -88,7 +97,11 @@ export function ImagesGrid({ images }: ImagesGridProps) {
 
   return (
     <>
-      <Grid templateColumns="repeat(5, 0.5fr)" gridGap={2}>
+      <Grid
+        templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
+        templateRows="repeat(auto-fit, 300px)"
+        gridGap="1em"
+      >
         {images.map((image) => (
           <ImageTile
             onClick={() => {
