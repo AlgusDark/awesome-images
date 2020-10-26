@@ -6,12 +6,13 @@ import { v4 as uuid } from "uuid";
  * an empty **Favorites** list if the user is _new_
  */
 export function init() {
+  console.log("== INIT DB ==");
   localForage.config({
     name: "awesome-images",
   });
 
   localForage.ready(async () => {
-    let lists = getAllLists();
+    let lists = await getAllLists();
     if (!lists) {
       localForage.setItem<AwesomeImages.List>(
         "lists",
