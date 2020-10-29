@@ -3,6 +3,7 @@
   overflow: hidden;
   border-radius: 1em;
   transition: all 0.15s ease-in-out;
+  height: 300px;
 }
 
 .tile:hover {

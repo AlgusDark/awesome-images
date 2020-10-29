@@ -98,7 +98,7 @@ export function ImagesGrid({ images }: ImagesGridProps) {
   return (
     <>
       <Grid
-        templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
+        templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
         templateRows="repeat(auto-fit, 300px)"
         gridGap="1em"
       >
