@@ -1,4 +1,4 @@
-import { ChakraProvider, Box } from "@chakra-ui/core";
+import { ChakraProvider, Box, Flex, Link } from "@chakra-ui/core";
 import { QueryCache, ReactQueryCacheProvider } from "react-query";
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -20,6 +20,17 @@ function Providers({ children }: { children: React.ReactNode }) {
   );
 }
 
+function Footer() {
+  return (
+    <Flex className="footer" p={8} justifyContent="center">
+      You can find the code at{" "}
+      <Link pl={2} href="https://github.com/AlgusDark/awesome-images">
+        GitHub
+      </Link>
+    </Flex>
+  );
+}
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Providers>
@@ -27,11 +38,29 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Awesome Images</title>
       </Head>
       <Header />
-      <Box px={8}>
+      <Box className="content" px={8}>
         <Box maxWidth="1240px" margin="0 auto">
           <Component {...pageProps} />
         </Box>
       </Box>
+      <Footer />
+      <style global jsx>{`
+        html,
+        body,
+        #__next {
+          height: 100%;
+        }
+        #__next {
+          display: flex;
+          flex-direction: column;
+        }
+        .content {
+          flex: 1 0 auto;
+        }
+        .footer {
+          flex-shrink: 0;
+        }
+      `}</style>
     </Providers>
   );
 }
